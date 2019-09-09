@@ -1,0 +1,42 @@
+<!Doctype HTML>
+<html>
+<head>
+  <title>Small Project A</title>
+  <link rel="stylesheet" type="text/css" href="css/projecta.css">
+</head>
+<body>
+  <script>
+  function play() {
+  let initial = 50;
+  document.getElementById("guess").innerHTML = "Is your number " + initial + "?";
+  //   // document.getElementByID("guess").innerHTML = "Is your Number" + initial;
+  }
+  </script>
+  <script>
+    function response() {
+      let doc = prompt("Did I get it?");
+    }
+  </script>
+
+  <script>
+  function check() {
+    let guess = 50;
+
+  }
+  </script>
+<aside>
+  <h1>Instructions</h1>
+  <ol>
+    <li>Think of an integer between 1 and 100</li>
+    <li>The program will ask the number</li>
+    <li>You respond "<" or ">" if the program is incorrect. Then respond "yes" if the program is correct</li>
+  </ol>
+</aside>
+
+<main>
+  <button onclick="play()">Play!</button>
+  <p id="guess">Think of your number, then click "Play!"</p>
+  <button onclick="response()">Response
+  </button>
+</main>
+</body>

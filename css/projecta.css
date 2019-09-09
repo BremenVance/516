@@ -1,0 +1,12 @@
+body {
+  background-color: lightblue;
+  display: flex;
+}
+
+aside {
+  border: 2px solid black;
+}
+
+main {
+  border: 2px solid black;
+}
