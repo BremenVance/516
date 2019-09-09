@@ -1,12 +1,17 @@
 body {
   background-color: lightblue;
   display: flex;
+  flex-direction: row-reverse;
 }
 
 aside {
   border: 2px solid black;
+  background-color: ivory;
+  padding: 5px;
 }
 
 main {
   border: 2px solid black;
+  background-color: ivory;
+  padding: 5px;
 }
