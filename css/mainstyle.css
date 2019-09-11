@@ -1,0 +1,28 @@
+/*
+colors: #FF8800, #668EB9, #73CFF8, #FFE2D2, #B3C7DC
+*/
+body {
+  background-color: darkgrey;
+  display: grid;
+  margin: 0px;
+}
+
+header {
+  width: 100%;
+  background-color: #668EB9;
+  text-align: center;
+}
+
+nav {
+  width: 100%;
+  background-color: #FFE2D2;
+  text-align: center;
+}
+
+nav li {
+  list-style: none;
+  border: 2px solid black;
+  background-color: #73CFF8;
+  display: inline;
+  padding: 5px;
+}
