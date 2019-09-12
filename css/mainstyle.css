@@ -26,3 +26,13 @@ nav li {
   display: inline;
   padding: 5px;
 }
+
+main {
+  background-color: #B3C7DC;
+  max-width: 650px;
+  min-width: 300px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 2px solid black;
+  min-height: 200px;
+}

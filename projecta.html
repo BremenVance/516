@@ -4,27 +4,9 @@
   <title>Small Project A</title>
   <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
   <link rel="stylesheet" type="text/css" href="css/projecta.css">
+  <script src="js/projecta.js"></script>
 </head>
 <body>
-  <script>
-  function play() {
-  let initial = 50;
-  document.getElementById("guess").innerHTML = "Is your number " + initial + "?";
-  //   // document.getElementByID("guess").innerHTML = "Is your Number" + initial;
-  }
-  </script>
-  <script>
-    function response() {
-      let doc = prompt("Did I get it?");
-    }
-  </script>
-
-  <script>
-  function check() {
-    let guess = 50;
-
-  }
-  </script>
 
   <header>
     <h1>Bremen's Project A</h1>
@@ -39,19 +21,22 @@
     </ul>
   </nav>
 
-<aside>
-  <h1>Instructions</h1>
-  <ol>
-    <li>Think of an integer between 1 and 100</li>
-    <li>The program will ask the number</li>
-    <li>You respond "<" or ">" if the program is incorrect. Then respond "yes" if the program is correct</li>
-  </ol>
-</aside>
+  <aside>
+    <h1>Instructions</h1>
+    <ol>
+      <li>Think of an integer between 1 and 100</li>
+      <li>The program will ask the number</li>
+      <li>You respond "<" or ">" if the program is incorrect. Then respond "yes" if the program is correct</li>
+    </ol>
+  </aside>
+  <main>
+    <p id="range">Set the range for the game (recommended range is 0-100!)</p>
+    <button id="rangeButton" onclick="setRange()">Set the range</button>
+    <button id="guessButton" onclick="guessNumber()" style="display:none;">Guess!</button>
+    <p id="answer"></p>
+    <p id="responseInstructions" style="display: none;">Type yes if I got it!</br>If your number is higher, type ">"</br>If your number is lower, type "<"</p>
+    <button id="responseButton" onclick="guessCheck()" style="display:none;">Respond</button>
 
-<main>
-  <button onclick="play()">Play!</button>
-  <p id="guess">Think of your number, then click "Play!"</p>
-  <button onclick="response()">Response
-  </button>
-</main>
+  </main>
+
 </body>
