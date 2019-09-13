@@ -68,27 +68,3 @@ function guessCheck() {
   }
 
 }
-
-
-  // </script>
-  //
-  //
-  //
-  // <!-- <script>
-  //   function play() {
-  //   let initial = 50;
-  //   document.getElementById("guess").innerHTML = "Is your number " + initial + "?";
-  //   //   // document.getElementByID("guess").innerHTML = "Is your Number" + initial;
-  //   }
-  // </script>
-  // <script>
-  //   function response() {
-  //     let doc = prompt("Did I get it?");
-  //   }
-  // </script>
-  // <script>
-  //   function check() {
-  //     let guess = 50;
-  //
-  //   }
-  // </script> -->
