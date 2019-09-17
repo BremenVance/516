@@ -1,15 +1,71 @@
 body {
-
+min-width: 420px;
 }
 
 aside {
   border: 2px solid black;
   background-color: ivory;
   padding: 5px;
+  margin:30px auto;
+  width: 350px;
 }
 
 main {
+  margin-top: 25px;
   border: 2px solid black;
   background-color: ivory;
   padding: 5px;
+}
+.gamebox {
+  text-align: center;
+}
+
+#playButton{
+  margin: 0px auto;
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+#playButton:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+#playButton:before,#playButton:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+#playButton:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#playButton:hover:before,#playButton:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+#gameReset {
+  background:#1AAB8A;
+  color:#fff;
+  border: 2px solid black;
+  height:30px;
+  font-size: 12pt;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
 }

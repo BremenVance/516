@@ -1,6 +1,7 @@
 <!Doctype HTML>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8"/>
   <title>Small Project A</title>
   <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
   <link rel="stylesheet" type="text/css" href="css/projecta.css">
@@ -26,17 +27,17 @@
     <ol>
       <li>Think of an integer between 1 and 100</li>
       <li>The program will ask the number</li>
-      <li>You respond "<" or ">" if the program is incorrect. Then respond "yes" if the program is correct</li>
+      <li>You respond Higher or Lower if the program is incorrect. Then respond "Yes" if the program is correct</li>
     </ol>
+    <button id="gameReset" onclick="resetGame()">Reset the Game</button>
   </aside>
-  <main>
-    <p id="range">Set the range for the game (recommended range is 0-100!)</p>
-    <button id="rangeButton" onclick="setRange()">Set the range</button>
-    <button id="guessButton" onclick="guessNumber()" style="display:none;">Guess!</button>
-    <p id="answer"></p>
-    <p id="responseInstructions" style="display: none;">Type yes if I got it!</br>If your number is higher, type ">"</br>If your number is lower, type "<"</p>
-    <button id="responseButton" onclick="guessCheck()" style="display:none;">Respond</button>
 
+  <main>
+    <div class="gamebox">
+      <h2>Guessing Game</h2>
+      <button id="playButton" onclick="guessingGame()">Guess!</button>
+      <p id="results"></p>
+    </div>
   </main>
 
 </body>

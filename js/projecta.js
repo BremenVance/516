@@ -1,70 +1,86 @@
-//function for truncating numbers by Robert Koritnik at https://stackoverflow.com/questions/596467/how-do-i-convert-a-float-number-to-a-whole-number-in-javascript
-function float2int (value) {
-    return value | 0;
+let range = 100;
+let assumedHigh = 100;
+let assumedLow = 0;
+let compGuess = 50;
+let guessCounter = 0;
+let errorCount = 0;
+let guessCount = 1;
+
+function resetGame() {
+  range = 100;
+  assumedHigh = 100;
+  assumedLow = 0;
+  compGuess = 50;
+  guessCounter = 0;
+  errorCount = 0;
+  guessCount = 1;
+  document.getElementById("results").innerHTML = "";
 }
 
-//Set the range of numbers in guessing game
-function setRange() {
-  minRange = prompt("what is the lowest number in the game?");
-  maxRange = prompt("what is the largest number in the game?");
-  changeRange();
-}
-
-function changeRange() {
-  document.getElementById("range").innerHTML = "The range for this game is " + minRange + " - " + maxRange;
-  document.getElementById("rangeButton").style.display = "none";
-  displayGuess()
-}
-
-function displayGuess() {
-  document.getElementById("guessButton").style.display = "block";
-}
-//guess the number
-function guessNumber() {
-  guess = float2int((maxRange-minRange)/2)
-  guessCount = 1
-  document.getElementById("answer").innerHTML = "Is your number " + guess + "?";
-  document.getElementById("range").style.display = "none";
-  document.getElementById("guessButton").style.display = "none";
-  // document.getElementById("responseInstructions").style.display = "block";
-  document.getElementById("responseButton").style.display = "block";
-}
-
-function guessHigher(){
-  let newGuess = ((maxRange-guess)/(2*guessCount)) + guess;
-  guess = float2int(newGuess) + 1
-  guessCount++
-}
-function guessLower(){
-  let newGuess = (guess)/(2*guessCount);
-  guess = float2int(newGuess) - 1
-  guessCount++
-}
-function incorrectResponse(){
-
-}
-
-
-function guessCheck() {
-  response = prompt("Did I guess correctly? Is the number " + guess + "?</br> Type 'yes', '>', or '<'")
-
-  if (response == "yes") {
-    document.getElementById("responseButton").style.display = "none";
-    document.getElementById("answer").innerHTML = "WOOHOO!!! That was easy!!! I knew your answer was " + guess + "!"
+function guessingGame(){
+  let userResponse = prompt("Guess: " + compGuess + " ... " + "Higher, Lower, or Yes");
+  if (userResponse == "Yes") {
+    document.getElementById("results").innerHTML = "Great! Your number is " + compGuess + " !" + "</br></br>Total number of guesses: " + guessCount;
   }
 
-  else if (response == ">") {
-    guessHigher();
-    document.getElementById("answer").innerHTML = "Hmmm.. Is your number " + guess + "?"
+  else if (userResponse == "Higher") {
+    assumedLow = compGuess;
+    console.log("New low is " + assumedLow);
+    diff = ((assumedHigh - assumedLow)/2).toFixed(0);
+    console.log("the diff is " + diff);
+    compGuess = parseInt(diff) + parseInt(compGuess);
+    console.log("new guess is " + compGuess);
+    console.log(compGuess);
+    if (guessCount == 1) {
+      document.getElementById("results").innerHTML = "Okay..My new guess is " + compGuess + ".";
+    }
+    if (guessCount == 2) {
+      document.getElementById("results").innerHTML = "Let me think. Is it " + compGuess + "?";
+    }
+    if (guessCount == 3) {
+      document.getElementById("results").innerHTML = "Got it. It is " + compGuess + "!";
+    }
+    if (guessCount > 3) {
+      document.getElementById("results").innerHTML =  compGuess + "?";
+    }
+    guessCount ++;
   }
 
-  else if (response == "<") {
-    guessLower();
-    document.getElementById("answer").innerHTML = "I see.. Is your number " + guess + "?"
+  else if (userResponse == "Lower") {
+    assumedHigh = compGuess;
+    console.log("New high is " + assumedHigh);
+    diff = ((assumedHigh - assumedLow)/2).toFixed(0);
+    console.log("the diff is " + diff);
+    compGuess = parseInt(compGuess) - parseInt(diff);
+    console.log("new guess is " + compGuess);
+    if (guessCount == 1) {
+      document.getElementById("results").innerHTML = "I see..How about " + compGuess + "?";
+    }
+    if (guessCount == 2) {
+      document.getElementById("results").innerHTML = "Are you sure? Is it " + compGuess + "?";
+    }
+    if (guessCount == 3) {
+      document.getElementById("results").innerHTML = "Hmmm... It must be " + compGuess + "?";
+    }
+    if (guessCount > 3) {
+      document.getElementById("results").innerHTML = compGuess + "?";
+    }
+    guessCount ++;
   }
-  //in case the user inputs invalid response
+
   else {
-    incorrectResponse();
+    errorCount ++;
+    if (errorCount == 1) {
+      userResponse = prompt("The guess is still " + compGuess + " I ONLY UNDERSTAND Higher, Lower, or Yes");
+      console.log(compGuess);
+    }
+    if (errorCount == 2) {
+      userResponse = prompt("You were already warned!" + "I guess " + compGuess +" Higher, Lower, or Yes?");
+      console.log(compGuess);
+    }
+    if (errorCount > 2) {
+      userResponse = prompt("Stop messing around already! My guess is " + compGuess + " Is the number Higher, Lower, or Yes?");
+      console.log(compGuess);
+    }
   }
-
 }
