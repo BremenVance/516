@@ -71,16 +71,13 @@ function guessingGame(){
   else {
     errorCount ++;
     if (errorCount == 1) {
-      userResponse = prompt("The guess is still " + compGuess + " I ONLY UNDERSTAND Higher, Lower, or Yes");
-      console.log(compGuess);
+      document.getElementById("results").innerHTML = "The guess is still " + compGuess + " I ONLY Understand Higher, Lower, or Yes </br>(Capitalize the first letter!)";
     }
     if (errorCount == 2) {
-      userResponse = prompt("You were already warned!" + "I guess " + compGuess +" Higher, Lower, or Yes?");
-      console.log(compGuess);
+      document.getElementById("results").innerHTML = "You were already warned!" + "I guess " + compGuess +" Higher, Lower, or Yes?";
     }
     if (errorCount > 2) {
-      userResponse = prompt("Stop messing around already! My guess is " + compGuess + " Is the number Higher, Lower, or Yes?");
-      console.log(compGuess);
+      document.getElementById("results").innerHTML = "Stop messing around already! My guess is " + compGuess + " Is the number Higher, Lower, or Yes?";
     }
   }
 }
