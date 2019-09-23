@@ -5,7 +5,7 @@
   <title>Small Project A</title>
   <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
   <link rel="stylesheet" type="text/css" href="css/projecta.css">
-  <script src="js/projecta.js"></script>
+  <script src="js/projecta-improved.js"></script>
 </head>
 <body>
 
@@ -23,11 +23,22 @@
     </ul>
   </nav>
 
+  <aside>
+    <h1>Instructions</h1>
+    <ol>
+      <li>Think of an integer between 1 and 100</li>
+      <li>The program will ask the number</li>
+      <li>You respond Higher or Lower if the program is incorrect. Then respond "Yes" if the program is correct</li>
+    </ol>
+    <button id="gameReset" onclick="resetGame()">Reset the Game</button>
+  </aside>
 
   <main>
-    <h1>Improved version</h1>
-    To play the game again with a more attactive interface, play here:
-    <a href="projecta-improved.html">Improved Game</a>
+    <div class="gamebox">
+      <h2>Guessing Game</h2>
+      <button id="playButton" onclick="guessingGame()">Guess!</button>
+      <p id="results"></p>
+    </div>
   </main>
 
 </body>
