@@ -1,7 +1,6 @@
-let range = 100;
 let assumedHigh = 100;
-let assumedLow = 0;
-let compGuess = 50;
+let assumedLow = 1;
+let compGuess = (assumedHigh + assumedLow)/2;
 let guessCounter = 0;
 let errorCount = 0;
 let guessCount = 1;
@@ -9,7 +8,7 @@ let guessCount = 1;
 function resetGame() {
   range = 100;
   assumedHigh = 100;
-  assumedLow = 0;
+  assumedLow = 1;
   compGuess = 50;
   guessCounter = 0;
   errorCount = 0;
