@@ -1,6 +1,6 @@
 let assumedHigh = 100;
 let assumedLow = 1;
-let compGuess = (assumedHigh + assumedLow)/2;
+let compGuess = ((assumedHigh + assumedLow)/2).toFixed(0);
 let userResponse = prompt("Is your number " + compGuess);
 
 while (userResponse != "yes") {
