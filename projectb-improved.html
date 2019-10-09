@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Project B</title>
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/projectb.css">
+    <script src="js/projectb.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Bremen's Project B</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projecta.html">Project A</a></li>
+        <li><a href="projectb.html">Project B</a></li>
+        <li><a href="projectc.html">Project C</a></li>
+        <li><a href="projectd.html">Project D</a></li>
+        <li><a href="projecte.html">Project E</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h2>A Caesar Cipher</h2>
+      <h3>Shift:</h3>
+      <input id="shift" type="number" name="cipherShift" value="set shift" oninput="ddd()">
+      <h3>Message:</h3>
+      <input id="usertext" type="text" name="source" value="Input your text here" oninput="fff()">
+      <hr>
+      <script>
+      let text = ""
+      let shift = 0
+      let encryptKey = "abcdefghijklmnopqrstuvwxyz"; //to improve the code, make the encryptKey visable/allow for randomized encryptKey
+      function fff() {
+        text = document.getElementById("usertext").value;
+        console.log(text);
+        return (text);
+      }
+      function ddd() {
+        shift = document.getElementById("shift").value;
+        console.log(shift);
+      }
+      function init() { //function to reset forms on page load (or reload)
+        document.getElementById("usertext").value="";
+        document.getElementById("shift").value="";
+      }
+      window.onload = init();
+      </script>
+
+      <button id="cipherButton" type="button" name="button" onclick="caesarCipher(shift, text, encryptKey)">Cipher</button>
+
+    </main>
+
+    <aside>
+    <h2>Your text:</h2>
+      <p id="sourceText"></p>
+    <h2>Encrypted:</h2>
+      <p id="encryptedText"></p>
+    </aside>
+
+  </body>
+</html>

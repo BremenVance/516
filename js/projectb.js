@@ -1,46 +1,55 @@
-let shift = 0;
-let sourceText = "AbcdefghijKLMNopqrsTUVwxYZ!";
-let encryptKeyLower="abcdefghijklmnopqrstuvwxyz";
-let encryptKeyUpper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+function caesarCipher(shift, sourceText, encryptKey) {
 
-function caesarCipher() {
-  document.getElementById("Source Text").innerHTML = sourceText;
+  shift = parseInt(shift);
+  // let encryptKey = "abcdefghijklmnopqrstuvwxyz";
+  let upperEnc = encryptKey.toUpperCase;
   let encryptedString = "";
-  shift = 10;
-  console.log("source text length is: " + sourceText.length);
-  console.log("encrytpion string length is: " + encryptKeyLower.length);
-  let encLenth = encryptKeyLower.length;
+  let x = "";
 
-  for (x in sourceText) { //x is a position in the string sourceText
-    unEnc = sourceText.slice(parseInt(x), (parseInt(x)+1)); //findes the letter of each position in the string sourceText. sets the letter as varyable unEnc
-
-    if (!unEnc.match(/[a-z]/) && !unEnc.match(/[A-Z]/)) { //checks for a characters that are NOT letters
-      encryptedString = encryptedString += (unEnc); //adds character to encrypted string
+  function encryptWrap(encryptPosition, encryptKey) {
+    if (encryptPosition > (encryptKey.length-1)) {
+      encryptPosition = (encryptPosition % (encryptKey.length));
     }
+    else if ((encryptPosition % encryptKey.length) == -0) { //handle problem of -0
+      encryptPosition = 0;
+    }
+    else if (encryptPosition < 0) {
+      encryptPosition = ((encryptPosition % (encryptKey.length)) + (encryptKey.length));
+    }
+    else {
+      encryptPosition = encryptPosition;
+    }
+    return encryptPosition;
+  }
 
-      else if (unEnc == unEnc.toLowerCase()) { //check for lowercase letters
-        let encryptStart = encryptKeyLower.indexOf(unEnc); //Finds the letter in the encryptKey stores position number
-        let encryptPosition = encryptStart + shift; //calculate new position
-          if (encryptPosition > encryptKeyLower.length) {
-            encryptPosition = encryptPosition + encryptKeyLower.length;
-          }
-            else if (encryptPosition < 0) {
-              encryptPosition = encryptPosition - (encryptKeyLower.length+1);
-            }
 
-        let encLetter = encryptKeyLower.slice(encryptPosition, (encryptPosition + 1));
-        console.log("lower case original '" + unEnc + "' is now encrypted as '" + encLetter + "'");
-        encryptedString = encryptedString += (encLetter); //adds character to encrypted string
+  for (var i = 0; i < sourceText.length; i++) { //loop through each character in the string
+    //This section deals with nonletter characters by just adding to encryptedString.
+    x = sourceText[i];
+    if (!x.match(/[a-z]/) && !x.match(/[A-Z]/)) { //checks for a characters that are NOT letters
+      encryptedString = encryptedString += (x); //adds character to encrypted string
+    }
+    //This section handles upper case letters by comparing the letter to an uppercase version of the Encrypt String
+    else if (x == x.toUpperCase()) {
+      let upperEnc = encryptKey.toUpperCase();
+      let encryptStart = upperEnc.indexOf(x);
+      let encryptPosition = encryptStart + shift;
+      encryptPosition = encryptWrap(encryptPosition, encryptKey);
+      x = encryptKey[encryptPosition]; //finds character in encryptKey to replace current character
+      x = x.toUpperCase(); //makes the letter upper case
+      encryptedString = encryptedString += (x); //adds character to encrypted string
       }
 
-        else if (unEnc == unEnc.toUpperCase()) { //check for uppercase letters
-          let encryptStart = encryptKeyUpper.indexOf(unEnc); //Finds the letter in the encryptKey stores position number
-          let encryptPosition = encryptStart + shift; //calculate new position
-          let encLetter = encryptKeyUpper.slice(encryptPosition, (encryptPosition + 1));
-          encryptedString = encryptedString += (encLetter); //adds character to encrypted string
-        }
-
+    //This section handles lower case letters by comparing the letter to a lowercase verson of the Encrypt String
+    else if (x == x.toLowerCase()) {
+      let lowerEnc = encryptKey.toLowerCase();
+      let encryptStart = lowerEnc.indexOf(x);
+      let encryptPosition = encryptStart + shift;
+      encryptPosition = encryptWrap(encryptPosition, encryptKey);
+      x = encryptKey[encryptPosition]; //finds character in encryptKey to replace current character
+      encryptedString = encryptedString += (x); //adds character to encrypted string
+    }
   }
-  console.log(encryptedString);
-  document.getElementById("Encrypted Text").innerHTML = encryptedString;
+  document.getElementById("sourceText").innerHTML = text;
+  document.getElementById("encryptedText").innerHTML = encryptedString;
 }
