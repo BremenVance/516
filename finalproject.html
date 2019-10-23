@@ -9,8 +9,9 @@
 
 
 <script>
+x = "text.txt"
 let dataFile = new XMLHttpRequest;
-dataFile.open('GET', 'data/leavesofgrass.txt', true);
+dataFile.open('GET', 'x', true);
 dataFile.onload = function (){
     document.write( dataFile.responseText );
 };
