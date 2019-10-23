@@ -12,7 +12,7 @@
 let dataFile = new XMLHttpRequest;
 dataFile.open('GET', 'data/leavesofgrass.txt', true);
 dataFile.onload = function (){
-    document.write( xhr.responseText );
+    document.write( dataFile.responseText );
 };
 dataFile.send(null);
 </script>
