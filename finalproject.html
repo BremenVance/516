@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+let dataFile = new XMLHttpRequest;
+dataFile.open('GET', 'data/leavesofgrass.txt', true);
+dataFile.onload = function (){
+    document.write( xhr.responseText );
+};
+dataFile.send(null);
+</script>
+
+
+
+  </body>
+</html>
