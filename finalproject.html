@@ -7,13 +7,16 @@
   </head>
   <body>
 
+<main>
+
+</main>
 
 <script>
 x = "text.txt"
 let dataFile = new XMLHttpRequest;
 dataFile.open('GET', 'x', true);
 dataFile.onload = function (){
-    document.write( dataFile.responseText );
+    document.getElementById("main").innerHTML = this.responseText;
 };
 dataFile.send(null);
 </script>
