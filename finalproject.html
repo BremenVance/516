@@ -4,22 +4,45 @@
     <meta charset="utf-8">
     <title>Final Project</title>
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <script src="js/finalproject.js"></script>
   </head>
   <body>
+    <header>
+      <h1>Bremen's 516 Project Site</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projecta.html">Project A</a></li>
+        <li><a href="projectb.html">Project B</a></li>
+        <li><a href="projectc.html">Project C</a></li>
+        <li><a href="projectd.html">Project D</a></li>
+        <li><a href="projecte.html">Project E</a></li>
+        <li><a href="finalproject.html">Final Project</a></li>
+      </ul>
+    </nav>
 
-<main>
 
-</main>
+    <main>
+      <input id="searchBar" type="text" name="searchBar" value="set shift" oninput="searchTerms()">
+
+    </main>
+
+    <div id="results">
+
+    </div>
 
 <script>
-let corpus = {"one": "test.txt", "two": "leavesofgrass.txt"}
-let dataFile = "text.txt"
-let dataFile = new XMLHttpRequest;
-dataFile.open('GET', dataFile, true);
-dataFile.onload = function (){
-    document.getElementById("main").innerHTML = this.responseText;
-};
-dataFile.send(null);
+searchTerms()
+
+// let corpus = {"one": "test.txt", "two": "leavesofgrass.txt"}
+// let dataFile = "text.txt"
+// let dataFile = new XMLHttpRequest;
+// dataFile.open('GET', dataFile, true);
+// dataFile.onload = function (){
+//     document.getElementById("main").innerHTML = this.responseText;
+// };
+// dataFile.send(null);
 </script>
 
 
