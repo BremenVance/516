@@ -35,14 +35,14 @@
     <script>
     "use strict";
     let userString = prompt("Your English Phrase");
-    var re1 = /(\w?)([aeiouy])/g;
+    var re1 = /(\w?)([aeiouyAEIOUY])/g;
     var re2 = /aig(e)\b/g;
-    var re3 = /\b([^aeiouy]*)(e)\b/g;
-    var re4 = /(aig[aeiouy])aig([aeiouy])/g
+    var re3 = /\b([^aeiouyAEIOUY]*)(e)\b/g;
+    var re4 = /(aig[aeiouyAEIOUY])aig([aeiouy])/g
     var stringLength = userString.length;
     let hpTranslation = userString.replace(re1,'$1aig$2');
     hpTranslation = hpTranslation.replace(re2, '$1');
-    hpTranslation = hpTranslation.replace(re3, '$1aig$2'); 
+    hpTranslation = hpTranslation.replace(re3, '$1aig$2');
     hpTranslation = hpTranslation.replace(re4, '$1$2');
     alert(hpTranslation);
     </script>
