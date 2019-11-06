@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Final Project</title>
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/finalproject.css">
     <script src="js/finalproject.js"></script>
   </head>
   <body>
@@ -21,31 +22,26 @@
         <li><a href="finalproject.html">Final Project</a></li>
       </ul>
     </nav>
-
-
     <main>
-      <input id="searchBar" type="text" name="searchBar" value="set shift" oninput="searchTerms()">
-
+      <h1>Search</h1>
+      <input id="searchBar" type="text" name="searchBar" value="" placeholder="Search" oninput="searchTerms()">
+      <br>
+      <button id="addTerm" onclick="addTerm()">Add Term</button>
     </main>
-
-    <div id="results">
-
+    <div id="resultsWrapper">
+    <h1>Search Terms</h1>
+    <button id="clearTerms" onclick="clearTerms()">Clear Terms</button>
+    <button id="findTerm" onclick="findTerm()">Find Term</button>
+    <hr>
+      <div id="termList">
+      </div>
+      <div id="data">
+      </div>
     </div>
 
-<script>
-searchTerms()
-
-// let corpus = {"one": "test.txt", "two": "leavesofgrass.txt"}
-// let dataFile = "text.txt"
-// let dataFile = new XMLHttpRequest;
-// dataFile.open('GET', dataFile, true);
-// dataFile.onload = function (){
-//     document.getElementById("main").innerHTML = this.responseText;
-// };
-// dataFile.send(null);
-</script>
-
-
+    <script>
+    window.onload = init();
+    </script>
 
   </body>
 </html>

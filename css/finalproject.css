@@ -1,0 +1,52 @@
+#resultsWrapper {
+  background-color: ivory;
+  border: 2px solid black;
+  max-width: 400px;
+  min-width: 400px;
+  min-height: 200px;
+  margin: 5px auto;
+}
+
+#resultsWrapper {
+  text-align: center;
+}
+
+#searchBar {
+  font-size: 20px;
+  width: 90%;
+  height: 50px;
+  margin: 20px auto;
+}
+
+button {
+  margin: 0px auto;
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before {
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}

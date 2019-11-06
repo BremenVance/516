@@ -31,5 +31,18 @@
     <aside>
 
     </aside>
+
+    <script>
+    "use strict";
+    let userString = prompt("Your English Phrase");
+    var re1 = /(\w?)([aeiouy])/g;
+    var re2 = /aig(e)\b/g;
+    var re3 = /\b([^aeiou]*)(e)\b/g;
+    var stringLength = userString.length;
+    let hpTranslation = userString.replace(re1,'$1aig$2');
+    hpTranslation = hpTranslation.replace(re2, '$1');
+    hpTranslation = hpTranslation.replace(re3, '$1aig$2');
+    alert(hpTranslation);
+    </script>
   </body>
 </html>
