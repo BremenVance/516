@@ -1,0 +1,14 @@
+Within writing studies disciplines, scholars have accepted the numerous ideologies that comprise the field (Fulkerson, 2005; Lauer, 1984). Scholars have attempted to identify and group areas of the field to help clarify points of agreement and identify historical trends, all of which is important for navigating challenges such as beginning to study, writing a literature review, or applying disciplinary knowledge. In recent years, distance reading has been identified as a useful method for studying disciplinary trends (D. Mueller, 2012; D. N. Mueller, 2017). Distance reading was developed as a method in literary studies as an alternative to close reading, the careful and multivariant interpretive process designed to explicate the imbedded meanings in textual passages. Distant reading strives to uncover patterns that are not identifiable through linear readings (Moretti, 2013). 
+
+This paper proposes the development of a web-interface for visualizing data collected from a specialized corpus of pedagogical materials. I will use D3 to display interactive and visual elements on a web page. The goal of the interface is to establish visualization techniques that allow users to explore and interact with textual data that represents disciplinary knowledge.
+
+A recent article in Karios demonstrates the potential of interactive visualizations in academic publications. Palmeri and McCorkle present interactive timelines tracking scholarship over the 100 year history of College English (Palmeri & McCorkle, 2017). Another visualization worth considering comes from the New York Times. The authors present data from national convention speeches, that is corpus data, in the form of interactive web graphics (Bostock, Carter, & Ericson, 2012).
+
+References
+Bostock, M., Carter, S., & Ericson, M. (2012, September 7). At the National Conventions, the Words They Used. The New York Times. Retrieved from http://www.nytimes.com/interactive/2012/09/06/us/politics/convention-word-counts.html#!
+Fulkerson, R. (2005). Composition at the turn of the twenty-first century. College Composition and Communication, 56(4), 654–687.
+Lauer, J. M. (1984). Composition Studies: Dappled Discipline. Rhetoric Review, 3(1), 20–29.
+Moretti, F. (2013). Distant reading. London ; New York: Verso.
+Mueller, D. (2012). Grasping rhetoric and composition by its long tail: What graphs can tell us about the field’s changing shape. College Composition and Communication, 64(1), 195–223.
+Mueller, D. N. (2017). Network sense: Methods for visualizing a discipline. Fort Collins, Colorado : Louisville, Colorado: The WAC Clearinghouse ; University Press of Colorado.
+Palmeri, J., & McCorkle, B. (2017). A distant view of English Journal, 1912-2012. Kairos: A Journal of Rhetoric, Technology and Pedagogy, 22(2). Retrieved from http://technorhetoric.net/22.2/topoi/palmeri-mccorkle/introduction.html
