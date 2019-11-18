@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Project E</title>
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
-    <link rel="stylesheet" type="text/css" href="css/projectd.css">
+    <link rel="stylesheet" type="text/css" href="css/projecte.css">
   </head>
   <body>
     <header>
@@ -17,19 +17,139 @@
         <li><a href="projectb.html">Project B</a></li>
         <li><a href="projectc.html">Project C</a></li>
         <li><a href="projectd.html">Project D</a></li>
-        <li><a href="projectd.html">Project E</a></li>
+        <li><a href="projecte.html">Project E</a></li>
         <li><a href="finalproject.html">Final Project</a></li>
       </ul>
     </nav>
+    <div class="wrapper">
 
-    <main>
-      <h2>Corpus Processing</h2>
+        <main>
+          <h2>Corpus Processing</h2>
+          <textarea id="usertext" type="text" name="source" value=""></textarea>
+          <br>
+          <button id="countWords" onclick="wordList()">Count!</button>
+        </main>
+        <!--consider using checkboxes to build list of characters for removal-->
+        <!-- <div id="charRemoval">
+          <input type="checkbox" name="period" value="period"> .
+          <input type="checkbox" name="questionmark" value="questionmark"> ?
+          <input type="checkbox" name="comma" value="comma"> ,
+        </div> -->
+
+        <div id="corpusData">
+          <div id="calculatedTokens">
+            <h3>Tokens:</h3>
+          </div>
+          <div id="calculatedTypes">
+            <h3>Types:</h3>
+          </div>
+          <div id="typeTokenRatio">
+            <h3>Type/Token Ratio:</h3>
+          </div>
+          <div id="wordList">
+            <h3>Word List</h3>
+          </div>
+        </div>
+
+      <div id="corpusText">
+        <H2>Your cleaned text:
+      </div>
+  </div>
+
+  <!--consider adding a simple graph of top words in a div here-->
 
 
-    </main>
+    <script>
 
-    <aside>
+    "use strict";
+    //
+    //This function takes text from form, removes punctuation, splits the string into an array of words, removes empty items from the array, creates a string listing the items for displaying in html, and calls the type and token functions
+    //
+    function wordList(usertext) {
+      let textClean = document.getElementById("usertext").value;
+      textClean = textClean.toUpperCase();
+      // textClean = textClean.replace(/[,.?!:;+=-@$%^()<>#"&*'|\\/]/g," ") //removes characters in the brackets
+      textClean = textClean.replace(/\W/g," ")//removes non word characters
+      textClean = textClean.replace(/\d/g," ")//removes numbers
+      textClean = textClean.split(" "); //splits string into items in an array based on a space
+      textClean = textClean.filter(function (word) { //removes empty items in the list
+        return word !="";
+      });
+      let stringCleaned = "";
+      for (let i of textClean) { //Turns list into a string to display in html
+        stringCleaned = stringCleaned += (" " + i);
+      };
+      document.getElementById("corpusText").innerHTML = "<h2>Cleaned Text</h2>" + stringCleaned; //adds the cleaned list of words to the page
+      types = {};
+      tokenAnalytics(textClean);
 
-    </aside>
+    }
+    //
+    //This function counts the total number of words in the list
+    //
+    function tokenAnalytics(wordList) {
+      let wordTokens = wordList.length;
+      document.getElementById("calculatedTokens").innerHTML = "Tokens: "+ wordTokens;
+      typesAnalytics(wordList,wordTokens);
+    }
+
+    //
+    //This function counts the number of unique words in the list and generates an object containing each word and the number of occurances
+    //
+    let types = {};
+    function typesAnalytics(userWords,wordTokens) {
+      for(let w of userWords) {
+        if (w in types) {//if the term is in types, increment the number in value
+          types[w] = types[w] + 1;
+        } else {//if the term is not in types, add it to types with the value of 1
+          types[w] = 1;
+        }
+      }
+      console.log(types);
+      let typesArray = Object.keys(types);
+      let wordTypeCount = typesArray.length;//count the total number of word types
+      let typeTokenRatio = wordTokens/wordTypeCount
+      typeTokenRatio = typeTokenRatio.toFixed(2);
+      document.getElementById("calculatedTypes").innerHTML = "Types: " + wordTypeCount;
+      document.getElementById("typeTokenRatio").innerHTML = "Type/Token Ratio: " + typeTokenRatio;
+      frequencySort(types);
+    };
+
+    //
+    //organize the types based on their value
+    //
+    function frequencySort(countObj) {
+      let sortedFrequency = {}; //empty object to hold sorted word and count pairs
+      let rawFrequency = countObj;
+      let frequencyArray = Object.keys(rawFrequency).map(function(key) { //converts object to an array of duo arrays
+        return [key, rawFrequency[key]];
+      });
+      //compare second item in each array to sort them
+      let wordCounts = []; //empty array to hold JUST the counts
+      for (let i = 0; i < frequencyArray.length; i++) {//create organized list of word counts
+        wordCounts.push(frequencyArray[i][1]);
+        wordCounts = wordCounts.sort(function(a,b) {return b-a});
+      }
+      wordCounts = Array.from(new Set(wordCounts))// remove duplicates from wordCounts
+      console.log(wordCounts);
+      for (let count of wordCounts) {//add word as key and count as value to final sorted array based on most to least frequent occurances
+        console.log("the count is " + count);
+        for (var i = 0; i < frequencyArray.length; i++) {
+          // console.log(frequencyArray[i][0]);
+          if (frequencyArray[i][1] == count) {
+            sortedFrequency[frequencyArray[i][0]]= count;
+          }
+        }
+      }
+      // console.log(sortedFrequency);
+      let orderedCountString = "";
+      for (var i = 0; i <Object.keys(sortedFrequency).length; i++) {
+        let countKey = Object.keys(sortedFrequency)[i];
+        let countValue = sortedFrequency[countKey];
+        orderedCountString = orderedCountString + "<p>" + countKey + ": " + countValue + "</p>"
+      }
+      document.getElementById("wordList").innerHTML = orderedCountString;
+    }
+    </script>
   </body>
 </html>

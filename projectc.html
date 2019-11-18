@@ -24,59 +24,63 @@
 
     <main>
       <h2>Learner Modeling</h2>
+      Click the button to practice your use of prepositions.<br>
+      <button id="prepositionPractice" onclick="prepositionPractice()">Practice</button>
 
     </main>
 
 <script>
 "use strict";
-let practiceSentences = {"in": ["I live ____ Ames.", "I swim ____ the pool.", "Were you ____ a movie?", "The milk goes ____ the fridge.", "She ran ____ a race."], "on":["The food is ____ the table.","The cowboy is ____ the horse.","I am ____ the way.","Go tell it ____ the mountain.","What show is ____ the TV?"], "to":["I am going ____ the store.","He threw the ball ____ the catcher.","She is driving ____ school.","It fell from the table ____ the floor.","The letter is on the way ____ you."], "near":["The tree grows ____ the house.", "The salt is ____ the pepper.", "I sit ____ my friends in class.", "He is sick and ____ death.", "Don't put a magnet ____ the computer!"], "of":["I need a cup ____ sugar.","Take a picture ____ the cat!","How many bowles ____ chili do you want?", "I dream ____ geniue!","Are you a member ____ the class?"]};
-let score = {"in": 0, "on": 0, "to": 0, "near": 0, "of": 0};
-let prepositionList = Object.keys(practiceSentences);
+function prepositionPractice(){
+  let practiceSentences = {"in": ["I live ____ Ames.", "I swim ____ the pool.", "Were you ____ a movie?", "The milk goes ____ the fridge.", "She ran ____ a race."], "on":["The food is ____ the table.","The cowboy is ____ the horse.","I am ____ the way.","Go tell it ____ the mountain.","What show is ____ the TV?"], "to":["I am going ____ the store.","He threw the ball ____ the catcher.","She is driving ____ school.","It fell from the table ____ the floor.","The letter is on the way ____ you."], "near":["The tree grows ____ the house.", "The salt is ____ the pepper.", "I sit ____ my friends in class.", "He is sick and ____ death.", "Don't put a magnet ____ the computer!"], "of":["I need a cup ____ sugar.","Take a picture ____ the cat!","How many bowles ____ chili do you want?", "I dream ____ geniue!","Are you a member ____ the class?"]};
+  let score = {"in": 0, "on": 0, "to": 0, "near": 0, "of": 0};
+  let prepositionList = Object.keys(practiceSentences);
 
 
-while (true) {//starts endless loop
+  while (true) {//starts endless loop
 
-  //find lowst score value
-  let lowScore = NaN;
-  for (let x of prepositionList) {
-    let currentScore = score[x];
-    if (lowScore < currentScore) { //check if low score is already in the array.
+    //find lowst score value
+    let lowScore = NaN;
+    for (let x of prepositionList) {
+      let currentScore = score[x];
+      if (lowScore < currentScore) { //check if low score is already in the array.
+
+      }
+      else {//if next score is lower than items in the array, erase the array and add new low score.
+        lowScore = currentScore;
+      }
 
     }
-    else {//if next score is lower than items in the array, erase the array and add new low score.
-      lowScore = currentScore;
+    // console.log(lowScore);
+
+    //find the keys with a value that match low scores
+    let practiceList = []; //set an empty List to hold approriate practice goals
+    for (let y in score) { //check the score of each and store the prepositions with the low score in the target array
+      if (score[y]==lowScore) {
+        practiceList.push(y);
+      }
+    }
+
+    //randomly select a preposition to learner
+    let prepositionRange = practiceList.length;
+    let target = practiceList[Math.floor(Math.random() * prepositionRange)]; //random number based on length of practiceLength
+
+    //randomly select a practice sentence to present the Learner
+    let randQ = Math.floor(Math.random() * practiceSentences[target].length);//random number 0-4 based on number of test items in the question bank
+    let practiceQuestion = practiceSentences[target][randQ];
+
+    //ask user question, provide feedback and update score
+    let answer = prompt(practiceQuestion); //ask question
+    if (answer == target) {
+      alert("correct!");
+      score[target] = score[target] + 1; //increase score
+    }
+    else {
+      alert(answer + " is incorrect!\nThe correct answer is: \n" + practiceQuestion.replace("____", target))
+      score[target] = score[target] -1; //decrease score
     }
 
   }
-  // console.log(lowScore);
-
-  //find the keys with a value that match low scores
-  let practiceList = []; //set an empty List to hold approriate practice goals
-  for (let y in score) { //check the score of each and store the prepositions with the low score in the target array
-    if (score[y]==lowScore) {
-      practiceList.push(y);
-    }
-  }
-
-  //randomly select a preposition to learner
-  let prepositionRange = practiceList.length;
-  let target = practiceList[Math.floor(Math.random() * prepositionRange)]; //random number based on length of practiceLength
-
-  //randomly select a practice sentence to present the Learner
-  let randQ = Math.floor(Math.random() * practiceSentences[target].length);//random number 0-4 based on number of test items in the question bank
-  let practiceQuestion = practiceSentences[target][randQ];
-
-  //ask user question, provide feedback and update score
-  let answer = prompt(practiceQuestion); //ask question
-  if (answer == target) {
-    alert("correct!");
-    score[target] = score[target] + 1; //increase score
-  }
-  else {
-    alert(answer + " is incorrect!\nThe correct answer is: \n" + practiceQuestion.replace("____", target))
-    score[target] = score[target] -1; //decrease score
-  }
-
 }
 
 
