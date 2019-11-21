@@ -18,6 +18,15 @@
   margin: 20px auto;
 }
 
+#display {
+  background-color: black;
+  height: 400px;
+  width: 500px;
+  border: 2px solid white;
+  margin: 100px auto;
+  padding: 25px 50px;
+}
+
 button {
   margin: 0px auto;
   background:#1AAB8A;
