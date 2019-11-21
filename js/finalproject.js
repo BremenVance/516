@@ -46,38 +46,44 @@ function clearTerms() {
 // }
 
 // d3 data loading
-    d3.json("data/multimodalcollocations.json", function(data){
-
+    d3.json("data/multimodalcollocations.json", function(data){ //reads in the json file
         console.log(data);
-
-        collocations = JSON.parse(data);
-        console.log(collocations);
-        // let visual = data.art;
-        // console.log(art);
-        wordArray = [];
-        for (w in data){
+        wordArray = [];//creates an array to hold key words
+        for (w in data){//adds key words to the array
           wordArray.push(w);
         }
-        console.log(wordArray);
+        // console.log(data["visual"]);
+        wordValue = data["visual"];
+        // console.log(wordValue);
+        // console.log(wordValue[0][0]);
+        wordCounts = []
+        i = 0;
+        while (i < 8){
+          // console.log(pair[0]);
+          wordCounts.push(wordValue[i][0]);
+          i++;
+        }
+        console.log(wordCounts);
+        // valueArray = [];
+        // for (v of wordArray) {
+        //   console.log(v);
+        //   console.log(data[v]);
+        //   // wordArray.push(w)
+        // }
+        // console.log(wordArray);
 
 
         var svg = d3.select("#display").append("svg").attr("height","100%").attr("width","100%");
 
-        // svg.selectAll("rect")
-        //       .data(dataArray)
-        //       .enter().append("rect")
-        //                 .attr("height",function(d,i){ return d*15; })
-        //                 .attr("width","50")
-        //                 .attr("fill","pink")
-        //                 .attr("x",function(d,i){ return 60*i; })
-        //                 .attr("y",function(d,i){ return 300-(d*15); });
-        // console.log(Object.keys(data));
-        // console.log(data.visual);
-        // i = 0;
-        // while (i < 5){
-        //   console.log(data."visual");
-        //   i++;
-        // }
+        svg.selectAll("rect")
+              .data(wordCounts)
+              .enter().append("rect")
+                        .attr("height",function(d,i){ return d*15; })
+                        .attr("width","50")
+                        .attr("fill","pink")
+                        .attr("x",function(d,i){ return 60*i; })
+                        .attr("y",function(d,i){ return 300-(d*15); });
+
 
         svg.selectAll("rect")
     });
