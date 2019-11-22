@@ -25,11 +25,16 @@
     </nav>
     <main>
       <h1>Search</h1>
-      <input id="searchBar" type="text" name="searchBar" value="" placeholder="Search" oninput="searchTerms()">
+      <select id="termList" type="select" oninput="setTerm()">
+        <option value="visual">visual</option>
+        <option value="google">Google</option>
+      </select>
+
+      <!-- <input id="searchBar" type="text" name="searchBar" value="" placeholder="Search" oninput="searchTerms()">
       <br>
-      <button id="addTerm" onclick="addTerm()">Add Term</button>
+      <button id="addTerm" onclick="addTerm()">Add Term</button> -->
     </main>
-    <div id="resultsWrapper">
+    <!-- <div id="resultsWrapper">
     <h1>Search Terms</h1>
     <button id="clearTerms" onclick="clearTerms()">Clear Terms</button>
     <button id="findTerm" onclick="findTerm()">Find Term</button>
@@ -39,15 +44,12 @@
       <div id="data">
       </div>
 
-    </div>
+    </div>-->
     <div id="display">
     </div>
 
     <script>
     window.onload = init();
-
-    var dataArray = [5,11,18];
-
 
     </script>
 
