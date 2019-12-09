@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+
+
+
+
+    <script>
+      chart = {
+        const svg = d3.select(DOM.svg(width, height));
+
+        svg.append("g")
+            .attr("fill", "steelblue")
+          .selectAll("rect")
+          .data(data)
+          .join("rect")
+            .attr("x", x(0))
+            .attr("y", d => y(d.name))
+            .attr("width", d => x(d.value) - x(0))
+            .attr("height", y.bandwidth());
+
+        svg.append("g")
+            .attr("fill", "white")
+            .attr("text-anchor", "end")
+            .style("font", "12px sans-serif")
+          .selectAll("text")
+          .data(data)
+          .join("text")
+            .attr("x", d => x(d.value) - 4)
+            .attr("y", d => y(d.name) + y.bandwidth() / 2)
+            .attr("dy", "0.35em")
+            .text(d => format(d.value));
+
+        svg.append("g")
+            .call(xAxis);
+
+        svg.append("g")
+            .call(yAxis);
+
+        return svg.node();
+      }
+
+
+      
+    </script>
+  </body>
+</html>

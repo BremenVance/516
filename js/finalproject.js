@@ -1,8 +1,18 @@
-//clear page on located
-function init() { //function to reset forms on page load (or reload)
-  document.getElementById("searchBar").value="";
+//style the about div
+function expand() {
+  if (document.getElementById("explanation").style.display === "none") {
+  setTimeout(() => {
+  document.getElementById("explanation").style.display = "block"; },1000);
+  document.getElementById("info").style.width = "560px";
+  document.getElementById("info").style.padding = "10px 20px";
+} else {
+  document.getElementById("explanation").style.display = "none";
+  setTimeout(() => {
+  document.getElementById("info").style.width = "50px";
+  document.getElementById("info").style.padding = "0px";
+}, 1000);
 }
-
+}
 //populate options for user to select from
 
 d3.json("data/multimodalcollocations.json", function(data){
@@ -59,24 +69,15 @@ d3.json("data/multimodalcollocations.json", function(data){ //reads in the json 
       i++;
     }
 
+    height = 200;
+    var margin = {left:50,right:50,top:40,bottom:0}
 
 
+    var y = d3.scaleLinear()
+            .domain([0,180])
+            .range([height,0]);
 
-
-
-
-        // valueArray = [];
-        // for (v of wordArray) {
-        //   console.log(v);
-        //   console.log(data[v]);
-        //   // wordArray.push(w)
-        // }
-        // console.log(wordArray);
-
-
-        //get a target word--use a drop down menu for this
-
-
+    var yAxis = d3.axisLeft(y);
 
 
     var svg = d3.select("#display").append("svg").attr("height","100%").attr("width","100%");
@@ -86,9 +87,9 @@ d3.json("data/multimodalcollocations.json", function(data){ //reads in the json 
           .enter().append("rect")
                     .attr("height",function(d,i){ return d*15; })
                     .attr("width","50")
-                    .attr("fill","lightgrey")
-                    .attr("stroke","red")
-                    .attr("stroke-width", "3px")
+                    .attr("fill","darkred")
+                    .attr("stroke","black")
+                    .attr("stroke-width", "1px")
                     .attr("x",function(d,i){ return 60*i; })
                     .attr("y",function(d,i){ return 300-(d*15); });
 
@@ -98,7 +99,12 @@ d3.json("data/multimodalcollocations.json", function(data){ //reads in the json 
         .attr("x", function(d,i){ return (10 + (i*60));})
         .attr("y",function(d,i){ return (330);})
         .attr("dominant-baseline","middle")
-        .attr("fill","white")
+        .attr("fill","black")
         .text(function(d){return d;})
-});
+
+
+    var chartGroup = svg.append("g").attr("transform","translate("+margin.left+","+margin.top+")");
+    chartGroup.append("path").attr("d",area(dataArray));
+    chartGroup.append("g").attr("class","axis y").call(yAxis);
+  });
 }

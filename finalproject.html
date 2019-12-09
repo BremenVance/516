@@ -23,33 +23,27 @@
         <li><a href="finalproject.html">Final Project</a></li>
       </ul>
     </nav>
+    <div id="info" onclick="expand()">
+      <strong>About</strong>
+      <div id="explanation">
+        <p>This page displays words some findings from my research into digital and multimodal language in writing textbooks. Select a term from the drop down menu to see words co-occuring words organized by frequency</p>
+      </div>
+    </div>
+    <div>
     <main>
-      <h1>Search</h1>
-      <select id="termList" type="select" oninput="setTerm()">
-        <option value="visual">visual</option>
-        <option value="google">Google</option>
-      </select>
-
-      <!-- <input id="searchBar" type="text" name="searchBar" value="" placeholder="Search" oninput="searchTerms()">
-      <br>
-      <button id="addTerm" onclick="addTerm()">Add Term</button> -->
+      <h1>Select a Term</h1>
+        <select id="termList" class="select-css" type="select" oninput="setTerm()">
+        </select>
     </main>
-    <!-- <div id="resultsWrapper">
-    <h1>Search Terms</h1>
-    <button id="clearTerms" onclick="clearTerms()">Clear Terms</button>
-    <button id="findTerm" onclick="findTerm()">Find Term</button>
-    <hr>
-      <div id="termList">
-      </div>
-      <div id="data">
-      </div>
 
-    </div>-->
     <div id="display">
     </div>
 
+
+    <footer>
+      Being Developed by Bremen Vance
+    </footer>
     <script>
-    window.onload = init();
 
     </script>
 

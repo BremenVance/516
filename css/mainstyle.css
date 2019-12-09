@@ -7,7 +7,7 @@ body {
   margin: 0px;
 }
 
-header {
+header, footer {
   width: 100%;
   background-color: #668EB9;
   text-align: center;
@@ -34,5 +34,11 @@ main {
   padding: 10px;
   margin: 0 auto;
   border: 2px solid black;
-  min-height: 200px;
+  min-height: 120px;
+}
+
+footer {
+  height: 50px;
+  border-top: 2px solid black;
+  margin: 10px 0px 0px 0px;
 }
