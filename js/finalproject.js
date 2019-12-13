@@ -41,9 +41,9 @@ function setTerm(){
   dispayCollocations(targetTerm);
   return targetTerm;
 }
-// let targetTerm = document.getElementById("termList").value;
-// let targetTerm = "visual";
-//d3 data loading
+
+
+//Draw the barchart
 function dispayCollocations(targetTerm){
 d3.selectAll("svg").attr("display","none");//remove existing svg from the page
 d3.json("data/multimodalcollocations.json", function(data){ //reads in the json file
