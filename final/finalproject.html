@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Final Project</title>
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/finalproject.css">
+  	<script type="text/javascript" src="js/d3.v4.js"></script>
+    <script src="js/finalproject.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Bremen's 516 Project Site</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projecta.html">Project A</a></li>
+        <li><a href="projectb.html">Project B</a></li>
+        <li><a href="projectc.html">Project C</a></li>
+        <li><a href="projectd.html">Project D</a></li>
+        <li><a href="projecte.html">Project E</a></li>
+        <li><a href="finalproject.html">Final Project</a></li>
+      </ul>
+    </nav>
+    <div id="info" onclick="expand()">
+      <strong>About</strong>
+      <div id="explanation">
+        <p>This page displays words some findings from my research into digital and multimodal language in writing textbooks. Select a term from the drop down menu to see words co-occuring words organized by frequency</p>
+      </div>
+    </div>
+    <div>
+    <main>
+      <h1>Select a Term</h1>
+        <select id="termList" class="select-css" type="select" oninput="setTerm()">
+        </select>
+    </main>
+
+    <div id="display">
+    </div>
+
+
+    <footer>
+      Being Developed by Bremen Vance
+    </footer>
+    <script>
+
+    </script>
+
+  </body>
+</html>
